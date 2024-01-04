@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-#t prints all the names defined by the compiled module hidden_4.pyc
 if __name__ == "__main__":
     import hidden_4
     # Print sorted name from directory
