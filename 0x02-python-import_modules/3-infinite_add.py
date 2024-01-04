@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-#prints the result of the addition of all arguments
 def add_arg(argv):
     n = len(argv) - 1
     if n == 0:
