@@ -1,11 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
-#include <object.h>
+#include <python.h>
+
 /**
  * print_python_list_info - function that prints some
  * basic info about Python lists
  * @p: python list
+ * @PyObject: a structure that only contains the
+ * reference count and the type pointer
  */
 void print_python_list_info(PyObject *p)
 {
