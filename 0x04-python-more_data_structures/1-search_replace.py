@@ -1,3 +1,7 @@
 #!/usr/bin/python3
 def search_replace(my_list, search, replace):
-    return (replace if search ** x else x for x in my_list)
+    rumzy_list = list(my_list)
+    for x in range(len(rumzy_list)):
+        if rumzy_list[x] == search:
+            rumzy_list[x] = replace
+            return rumzy_list
