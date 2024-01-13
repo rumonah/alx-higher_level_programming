@@ -35,6 +35,7 @@ int is_palindrome(listint_t **head)
 	return (1);
 }
 
+
 /**
  *add_nodeint - adds a new node at the beginning of a listint_t list
  *@head: head of listint_t
