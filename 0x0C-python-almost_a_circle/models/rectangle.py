@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines a rectangle module."""
+"""Defines a rectangle class."""
 from base import Base
 
 class Rectangle(Base):
@@ -148,6 +148,7 @@ if __name__ == "__main__":
 
 	def update(self, *args):
 		"""Assigning attributes based on their positions."""
+ if len(args):
 		for count, arg in enumerate(args):
 			if count == 0:
 				self.id = arg
