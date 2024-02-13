@@ -148,6 +148,7 @@ if __name__ == "__main__":
 
 	def update(self, *args):
 		"""Assigning attributes based on their positions."""
+ if len(args):
 		for count, arg in enumerate(args):
 			if count == 0:
 				self.id = arg
