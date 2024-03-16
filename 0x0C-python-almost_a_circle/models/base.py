@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """Defines a base model class."""
 import json
 import csv
@@ -7,17 +6,17 @@ import turtle
 
 
 class Base:
-    """Base model.
+    """Represent the base model.
 
-    This Represents the "base" for all other classes in the project 0x0C*.
+    Represents the "base" for all other classes in project 0x0C*.
 
-    Private Class Attributes:
-        __nb_object (int): Number of instantiated Bases.
+    Attributes:
+        __nb_objects (int): The number of instantiated Bases.
     """
 
     __nb_objects = 0
 
-    def __init__(self, id=None):
+    def _init_(self, id=None):
         """Initialize a new Base.
 
         Args:
@@ -47,7 +46,7 @@ class Base:
         Args:
             list_objs (list): A list of inherited Base instances.
         """
-        filename = cls.__name__ + ".json"
+        filename = cls._name_ + ".json"
         with open(filename, "w") as jsonfile:
             if list_objs is None:
                 jsonfile.write("[]")
@@ -77,7 +76,7 @@ class Base:
             **dictionary (dict): Key/value pairs of attributes to initialize.
         """
         if dictionary and dictionary != {}:
-            if cls.__name__ == "Rectangle":
+            if cls._name_ == "Rectangle":
                 new = cls(1, 1)
             else:
                 new = cls(1)
@@ -88,13 +87,13 @@ class Base:
     def load_from_file(cls):
         """Return a list of classes instantiated from a file of JSON strings.
 
-        Reads from `<cls.__name__>.json`.
+        Reads from <cls.__name__>.json.
 
         Returns:
             If the file does not exist - an empty list.
             Otherwise - a list of instantiated classes.
         """
-        filename = str(cls.__name__) + ".json"
+        filename = str(cls._name_) + ".json"
         try:
             with open(filename, "r") as jsonfile:
                 list_dicts = Base.from_json_string(jsonfile.read())
@@ -109,12 +108,12 @@ class Base:
         Args:
             list_objs (list): A list of inherited Base instances.
         """
-        filename = cls.__name__ + ".csv"
+        filename = cls._name_ + ".csv"
         with open(filename, "w", newline="") as csvfile:
             if list_objs is None or list_objs == []:
                 csvfile.write("[]")
             else:
-                if cls.__name__ == "Rectangle":
+                if cls._name_ == "Rectangle":
                     fieldnames = ["id", "width", "height", "x", "y"]
                 else:
                     fieldnames = ["id", "size", "x", "y"]
@@ -126,23 +125,23 @@ class Base:
     def load_from_file_csv(cls):
         """Return a list of classes instantiated from a CSV file.
 
-        Reads from `<cls.__name__>.csv`.
+        Reads from <cls.__name__>.csv.
 
         Returns:
             If the file does not exist - an empty list.
             Otherwise - a list of instantiated classes.
         """
-        filename = cls.__name__ + ".csv"
+        filename = cls._name_ + ".csv"
         try:
             with open(filename, "r", newline="") as csvfile:
-                if cls.__name__ == "Rectangle":
+                if cls._name_ == "Rectangle":
                     fieldnames = ["id", "width", "height", "x", "y"]
                 else:
                     fieldnames = ["id", "size", "x", "y"]
                 list_dicts = csv.DictReader(csvfile, fieldnames=fieldnames)
                 list_dicts = [dict([k, int(v)] for k, v in d.items())
-                              for p in list_dicts]
-                return [cls.create(**p) for p in list_dicts]
+                              for d in list_dicts]
+                return [cls.create(**d) for d in list_dicts]
         except IOError:
             return []
 
@@ -165,7 +164,7 @@ class Base:
             turt.up()
             turt.goto(rect.x, rect.y)
             turt.down()
-            for r in range(2):
+            for i in range(2):
                 turt.forward(rect.width)
                 turt.left(90)
                 turt.forward(rect.height)
@@ -178,7 +177,7 @@ class Base:
             turt.up()
             turt.goto(sq.x, sq.y)
             turt.down()
-            for r in range(2):
+            for i in range(2):
                 turt.forward(sq.width)
                 turt.left(90)
                 turt.forward(sq.height)
